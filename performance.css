@@ -36,6 +36,11 @@ nav {
     width: 3rem;
 }
 
+tbody td button {
+    background-color: transparent;
+    border: 0;
+}
+
 footer {
     background-color: #252525;
 }
