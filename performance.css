@@ -13,6 +13,25 @@ nav {
     width: 5rem;
 }
 
+#foto img {
+    width: 10rem;
+}
+
+#formButton button {
+    border: 0;
+    padding: 5px 10px;
+    width: 50%;
+}
+
+#left label {
+    width: 10rem;
+}
+
+#right label {
+    width: 10rem;
+}
+
+
 #footerLogo img {
     width: 3rem;
 }
