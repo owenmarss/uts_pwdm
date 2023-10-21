@@ -1,0 +1,26 @@
+* {
+    font-family: 'Poppins', sans-serif;
+    text-decoration: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+nav {
+    background-color: #e6f0ff;
+}
+
+#navLogo img {
+    width: 5rem;
+}
+
+#footerLogo img {
+    width: 3rem;
+}
+
+footer {
+    background-color: #252525;
+}
+
+#footerText p {
+    color: #F5F5F5;
+}

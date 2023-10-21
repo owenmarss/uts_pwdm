@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+
+        <!-- Google Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+        <!-- Bootstrap -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="home.css">
+    </head>
+    <body>
+        <nav class="d-flex justify-content-between align-items-center px-5 py-2">
+            <div class="" id="navLogo">
+                <img src="img/logo1.png" alt="" />
+            </div>
+
+            <div class="d-flex gap-5">
+                <a href="home.html" class="text-decoration-none fs-5 text-black link-primary"> Home </a>
+                <a href="performance.html" class="text-decoration-none fs-5 text-black link-primary"> Performance </a>
+            </div>
+        </nav>
+
+        <section id="database_information" class="container align-items-center pt-5">
+            <div class="row gap-3">
+                <div class="col border border-2 border-black rounded pt-4 pb-5">
+                    <div id="jumlahKaryawan_headline" class="pb-3">
+                        <h2 class="fs-3 fw-bold text-center align-middle"> Jumlah Karyawan Perusahaan </h2>
+                    </div>
+
+                    <div id="jumlahKaryawan_content">
+                        <div id="jumlahKaryawan_date">
+                            <p class="fw-semibold border-bottom border-2 border-black" style="width: fit-content;"> [Current Date] </p>
+                        </div>
+    
+                        <div id="jumlahKaryawan_tetap" class="d-flex align-items-center">
+                            <p class="fw-semibold"> Tetap: </p>
+                            <p> [Isi dari Karyawan Tetap] </p>
+                        </div>
+    
+                        <div id="jumlahKaryawan_tidakTetap" class="d-flex align-items-center">
+                            <p class="fw-semibold"> Tidak Tetap: </p>
+                            <p> [Isi dari karyawan tidak tetap] </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col border border-2 border-black rounded pt-4 pb-5">
+                    <div id="hasilPerformanceTetap_headline" class="pb-3">
+                        <h2 class="fs-3 fw-bold text-center"> Hasil Performance Karyawan Tetap </h2>
+                    </div>
+    
+                    <div id="hasilPerformanceTetap_content">
+                        <div id="hasilPerformanceTetap_date" class="d-flex">
+                            <p class="fw-semibold border-bottom border-2 border-black"> Tahun: </p>
+                            <p class="border-bottom border-2 border-black"> [Current Year] </p>
+                        </div>
+    
+                        <div id="hasilPerformanceTetap_result" class="d-flex">
+                            <p class="fw-semibold"> A: </p>
+                            <p> [Hasilnya] </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col border border-2 border-black rounded pt-4 pb-5">
+                    <div id="hasilPerformanceTidakTetap_headline" class="pb-3">
+                        <h1 class="fs-3 fw-bold text-center"> Hasil Performance Karyawan Tidak Tetap </h1>
+                    </div>
+    
+                    <div id="hasilPerformanceTidakTetap_content">
+                        <div id="hasilPerformanceTidakTetap_date" class="d-flex">
+                            <p class="fw-semibold border-bottom border-2 border-black"> Tahun: </p>
+                            <p class="border-bottom border-2 border-black"> [Current Year] </p>
+                        </div>
+    
+                        <div id="hasilPerformanceTidakTetap_result" class="d-flex">
+                            <p class="fw-semibold"> A: </p>
+                            <p> [Hasilnya] </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row pt-3">
+                <h1 class="text-center pb-1"> Karyawan Tetap Dengan Performance C dan D 2023 </h1>
+
+                <table>
+                    <tr class="text-center">
+                        <th class="border border-2 border-black"> Foto </th>
+                        <th class="border border-2 border-black"> NIK </th>
+                        <th class="border border-2 border-black"> Nama </th>
+                        <th class="border border-2 border-black"> Position </th>
+                    </tr>
+
+                    <tr class="text-center">
+                        <td class="border border-2 border-black py-2"> [Foto] </td>
+                        <td class="border border-2 border-black py-2"> [NIK] </td>
+                        <td class="border border-2 border-black py-2"> [Nama] </td>
+                        <td class="border border-2 border-black py-2"> [Position] </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="row pt-3 pb-5">
+                <h1 class="text-center pb-1"> Karyawan Tidak Tetap Dengan Performance C dan D 2023 </h1>
+
+                <table>
+                    <tr class="text-center">
+                        <th class="border border-2 border-black"> Foto </th>
+                        <th class="border border-2 border-black"> NIK </th>
+                        <th class="border border-2 border-black"> Nama </th>
+                        <th class="border border-2 border-black"> Position </th>
+                    </tr>
+
+                    <tr class="text-center">
+                        <td class="border border-2 border-black py-2"> [Foto] </td>
+                        <td class="border border-2 border-black py-2"> [NIK] </td>
+                        <td class="border border-2 border-black py-2"> [Nama] </td>
+                        <td class="border border-2 border-black py-2"> [Position] </td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+
+        <footer class="d-flex justify-content-between align-items-center px-5 py-3">
+            <div class="" id="footerLogo">
+                <img src="img/logo-only-white.png" alt="" />
+            </div>
+
+            <div id="footerText">
+                <p class="mb-0"> © 2023 Healthy Food </p>
+            </div>
+        </footer>
+
+        <!-- Bootstrap Script -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"> </script>
+    </body>
+</html>
