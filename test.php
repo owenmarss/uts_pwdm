@@ -13,8 +13,27 @@
     } else {
         echo "Couldn't connect!";
     }
-?>
 
+    function calculateTotal($responsibility, $teamwork, $management_time) {
+        return (0.3 * $responsibility) + (0.3 * $teamwork) + (0.4 * $management_time);
+    }
+
+    function calculateGrade($total) {
+        if($total >= 80) {
+            return 'A';
+        } elseif($total >= 60) {
+            return 'B';
+        } elseif($total >= 40) {
+            return 'C';
+        } else {
+            return 'D';
+        }
+    }
+
+    // Query to retrieve data from database
+    $sql = "SELECT tgl_penilaian, nik, nama, status_kerja, position, total, grade FROM karyawan";
+    $result = $conn->query($sql);
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -55,7 +74,23 @@
                     </thead>
 
                     <tbody>
-                        <tr class="text-center">
+                        <?php
+                            while($row = $result->fetch_assoc()) {
+                                echo "<tr class=\"text-center\">";
+                                echo "<td class=\"border border-2 border-black\">" . $row['tgl_penilaian'] . "</td>";
+                                echo "<td class=\"border border-2 border-black\">" . $row['nik'] . "</td>";
+                                echo "<td class=\"border border-2 border-black\">" . $row['nama'] . "</td>";
+                                echo "<td class=\"border border-2 border-black\">" . $row['status_kerja'] . "</td>";
+                                echo "<td class=\"border border-2 border-black\">" . $row['position'] . "</td>";
+                                echo "<td class=\"border border-2 border-black\">" . $row['total'] . "</td>";
+                                echo "<td class=\"border border-2 border-black\">" . $row['grade'] . "</td>";
+                                echo "<td class=\"border border-2 border-black bg-info-subtle\"> <button> View </button> </td>";
+                                echo "<td class=\"border border-2 border-black bg-warning-subtle\"> <button> Edit </button> </td>";
+                                echo "<td class=\"border border-2 border-black bg-danger\"> <button style=\"color: white;\"> Hapus </button> </td>";
+                            }
+                        ?>
+
+                        <!-- <tr class="text-center">
                             <td class="border border-2 border-black"> [dd-mm-yyyy] </td>
                             <td class="border border-2 border-black"> [NIK] </td>
                             <td class="border border-2 border-black"> [Nama] </td>
@@ -72,7 +107,7 @@
                             <td class="border border-2 border-black bg-danger">
                                 <button style="color: white;"> Hapus </button>
                             </td>
-                        </tr>
+                        </tr> -->
                     </tbody>
                 </table>
             </div>
