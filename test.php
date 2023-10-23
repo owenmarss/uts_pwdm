@@ -32,6 +32,9 @@
 
     // Query to retrieve data from database
     $sql = "SELECT tgl_penilaian, nik, nama, status_kerja, position, total, grade FROM karyawan";
+
+    // $tetap = count()
+
     $result = $conn->query($sql);
 ?>
 

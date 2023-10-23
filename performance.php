@@ -1,3 +1,11 @@
+<?php
+    include 'config.php';
+
+    // Query to retrieve data from database
+    $sql = "SELECT tgl_penilaian, nik, nama, status_kerja, position, total, grade FROM karyawan";
+    $result = $conn->query($sql);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,7 +38,7 @@
     </nav>
 
     <section id="performance_content" class="py-5">
-        <form action="" class="container">
+        <form action="" class="container" method="post">
             <div class="row border border-2 border-black py-5 rounded">
                 <div class="row justify-content-between">
                     <div id="foto" class="col d-flex gap-5">
@@ -107,7 +115,9 @@
                     </div>
                 </div>
             </div>
-
+        </form>
+        
+        <!-- <form action="" method="get"></form> -->
             <div class="row pt-3">
                 <table class="table table-hover">
                     <thead>
@@ -124,28 +134,45 @@
                     </thead>
 
                     <tbody>
-                        <tr class="text-center">
-                            <td class="border border-2 border-black"> [dd-mm-yyyy] </td>
-                            <td class="border border-2 border-black"> [NIK] </td>
-                            <td class="border border-2 border-black"> [Nama] </td>
-                            <td class="border border-2 border-black"> [Status Kerja] </td>
-                            <td class="border border-2 border-black"> [Posisi] </td>
-                            <td class="border border-2 border-black"> [Total] </td>
-                            <td class="border border-2 border-black"> [Grade] </td>
-                            <td class="border border-2 border-black bg-info-subtle">
-                                <button> View </button>
-                            </td>
-                            <td class="border border-2 border-black bg-warning-subtle">
-                                <button> Edit </button>
-                            </td>
-                            <td class="border border-2 border-black bg-danger">
-                                <button style="color: white;"> Hapus </button>
-                            </td>
-                        </tr>
+                        <?php
+                            while($row = $result->fetch_assoc()) {
+                                echo "<tr class=\"text-center\">";
+                                echo "<td class=\"border border-2 border-black\">" . $row['tgl_penilaian'] . "</td>";
+                                echo "<td class=\"border border-2 border-black\">" . $row['nik'] . "</td>";
+                                echo "<td class=\"border border-2 border-black\">" . $row['nama'] . "</td>";
+                                echo "<td class=\"border border-2 border-black\">" . $row['status_kerja'] . "</td>";
+                                echo "<td class=\"border border-2 border-black\">" . $row['position'] . "</td>";
+                                echo "<td class=\"border border-2 border-black\">" . $row['total'] . "</td>";
+                                echo "<td class=\"border border-2 border-black\">" . $row['grade'] . "</td>";
+
+                                echo "<td class=\"border border-2 border-black bg-info-subtle\">
+                                    <form action=\"\">
+                                        <button> View </button>
+                                    </form>
+                                </td>";
+
+                                echo "<td class=\"border border-2 border-black bg-warning-subtle\">
+                                    <form action=\"\">
+                                        <button> Edit </button>
+                                    </form>
+                                </td>";
+                                
+                                echo "<td class=\"border border-2 border-black bg-danger\">
+                                    <form action=\"delete.php\" method=\"post\">
+                                        <input type=\"hidden\" name=\"nik\" value=\"". $row['nik'] ."\">
+                                        <button style=\"color: white;\"> Hapus </button>
+                                    </form>
+                                </td>";
+                            }
+                        ?>
+
                     </tbody>
                 </table>
+
+                <div class="pt-5">
+                    <button class="btn btn-primary"> Add </button>
+                </div>
             </div>
-        </form>
     </section>
 
     <footer class="d-flex justify-content-between align-items-center px-5 py-3">
