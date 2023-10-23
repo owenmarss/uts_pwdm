@@ -38,8 +38,8 @@
     </nav>
 
     <section id="performance_content" class="py-5">
-        <form action="" class="container" method="post">
-            <div class="row border border-2 border-black py-5 rounded">
+        <div class="container">
+            <form action="" class="row border border-2 border-black py-5 rounded" method="post">
                 <div class="row justify-content-between">
                     <div id="foto" class="col d-flex gap-5">
                         <h5> Foto: </h5>
@@ -114,10 +114,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </form>
-        
-        <!-- <form action="" method="get"></form> -->
+            </form>
+            
             <div class="row pt-3">
                 <table class="table table-hover">
                     <thead>
@@ -132,7 +130,7 @@
                             <th colspan="3" class="border border-2 border-black"> Aksi </th>
                         </tr>
                     </thead>
-
+    
                     <tbody>
                         <?php
                             while($row = $result->fetch_assoc()) {
@@ -144,13 +142,13 @@
                                 echo "<td class=\"border border-2 border-black\">" . $row['position'] . "</td>";
                                 echo "<td class=\"border border-2 border-black\">" . $row['total'] . "</td>";
                                 echo "<td class=\"border border-2 border-black\">" . $row['grade'] . "</td>";
-
+    
                                 echo "<td class=\"border border-2 border-black bg-info-subtle\">
                                     <form action=\"\">
                                         <button> View </button>
                                     </form>
                                 </td>";
-
+    
                                 echo "<td class=\"border border-2 border-black bg-warning-subtle\">
                                     <form action=\"\">
                                         <button> Edit </button>
@@ -165,14 +163,15 @@
                                 </td>";
                             }
                         ?>
-
                     </tbody>
                 </table>
-
+    
                 <div class="pt-5">
                     <button class="btn btn-primary"> Add </button>
                 </div>
             </div>
+        </div>
+        
     </section>
 
     <footer class="d-flex justify-content-between align-items-center px-5 py-3">
