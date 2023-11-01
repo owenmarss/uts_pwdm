@@ -1,44 +1,3 @@
-<?php
-    include 'config.php';
-
-    // Query to retrieve data from database
-    $sql = "SELECT tgl_penilaian, nik, nama, status_kerja, position, responsibility, teamwork, management_time, total, grade FROM performance";
-    $result = $conn->query($sql);
-
-    $url = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-    $url_components = parse_url($url);
-
-    $object = (object)NULL;
-
-    if(isset($url_components['query'])) {
-        parse_str($url_components['query'], $params);
-        $nik = $params['nik'];
-        $sql_get_view = "SELECT tgl_penilaian, nik, nama, status_kerja, position, responsibility, teamwork, management_time, total, grade FROM performance WHERE nik = $nik";
-        // $result_view = $conn->query($sql_get_view);
-        // echo ' Hi '.$params['nik'];
-    
-        if ($result_view = $conn -> query($sql_get_view)) {
-            // while ($obj = $result_view -> fetch_object()) {
-                // printf("%s (%s)\n", $obje->tgl_penilaian, $obje->nik);
-                $object = $result_view -> fetch_object();
-                // array_push($object, $obj->nik);
-            // }
-            $result_view -> free_result();
-        }
-    }
-
-
-
-    // echo $obje->tgl_penilaian;
-    // echo $result_view -> fetch_object();
-    // $object->status_kerja == "Tetap" ? echo "Selected" : echo ""
-
-    // echo (isset($object->nik)) ? "value=\"" . $object->nik . "\"": "";
-
-    echo (isset($object->nik)) ? "value=\"" . $object->nik . "\"" : "";
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -53,41 +12,24 @@
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="main.css">
-    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" /> -->
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="performance.css">
 </head>
 <body>
-    <nav class="d-flex justify-content-between align-items-center px-5 py-2">
-        <div class="" id="navLogo">
-            <img src="img/logo1.png" alt="" />
-        </div>
-
-        <div class="d-flex gap-5">
-            <a href="home.html" class="text-decoration-none fs-5 text-black link-primary"> Home </a>
-            <a href="performance.php" class="text-decoration-none fs-5 text-black link-primary"> Performance </a>
-        </div>
-    </nav>
+    <h1> Hello World! </h1>
+    <input type="text" id="input">
+    <br>
 
     <section id="performance_content" class="py-5">
         <div class="container">
-            <form action="simpan.php" class="row border border-2 border-black py-5 rounded" method="post" enctype="multipart/form-data">
+            <form action="" class="row border border-2 border-black py-5 rounded" method="post">
                 <div class="row justify-content-between">
                     <div id="foto" class="col d-flex gap-5">
                         <h5> Foto: </h5>
-                        <div class="img-area" data-img="hello.png">
-                            <p>upload foto</p>
-                        </div>
-
-                        <!-- <img src="img/Sample_User_Icon.jpg" alt=""> -->
-                        <input type="file" id="file-img" accept="image/*" name="up_img" class="input">
-                        <!-- <input type="file" accept="image/*" name="" id="file_img"> -->
+                        <img src="img/Sample_User_Icon.jpg" alt="" style="width: 10rem;">
+                        <input type="file" name="" id="" class="">
                     </div>
     
                     <div id="formButton" class="col col-2 d-flex flex-column gap-2 align-items-end">
-                        <input type="submit" class="btn btn-success" name="submit" value="Simpan"></input>
-                        <!-- <button type="submit" class="btn btn-success" name="submit"> Simpan </button> -->
+                        <button type="submit" class="btn btn-success"> Simpan </button>
                         <button class="btn btn-warning"> Clear </button>
                         <button type="reset" class="btn btn-danger"> Cancel </button>
                     </div>
@@ -97,22 +39,22 @@
                     <div id="left" class="col"> 
                         <div class="col">
                             <label for="tanggal"> Tanggal Penilaian: </label>
-                            <input type="date" name="tanggal" id="tanggal" class="input" <?php echo (isset($object->nik)) ? "value=\"" . $object->tgl_penilaian . "\"" : "";?>>
+                            <input type="date" name="tanggal" id="tanggal">
                         </div>
     
                         <div class="col mt-3">
                             <label for="nik"> NIK: </label>
-                            <input type="text" name="nik" id="nik" class="input" <?php echo (isset($object->nik)) ? "value=\"" . $object->nik . "\"" : "";?>>
+                            <input type="text" name="nik" id="nik">
                         </div>
     
                         <div class="col mt-3">
                             <label for="nama"> Nama: </label>
-                            <input type="text" name="nama" id="nama" class="input" <?php echo (isset($object->nik)) ? "value=\"" . $object->nama . "\"" : "";?>>
+                            <input type="text" name="nama" id="nama">
                         </div>
     
                         <div class="col mt-3">
                             <label for="status"> Status Kerja: </label>
-                            <select name="status" id="status" class="input">
+                            <select name="status" id="status">
                                 <Option> Tetap </Option>
                                 <Option> Tidak Tetap </Option>
                             </select>
@@ -120,35 +62,34 @@
     
                         <div class="col mt-3">
                             <label for="posisi"> Posisi: </label>
-                            <input type="text" name="posisi" id="posisi" class="input" <?php echo (isset($object->nik)) ? "value=\"" . $object->position . "\"" : "";?>>
+                            <input type="text" name="posisi" id="posisi">
                         </div>
                     </div>
     
                     <div id="right" class="col"> 
                         <div class="col">
                             <label for="responsibility"> Responsibility: </label>
-                            <input type="number" name="responsibility" id="responsibility" class="input" <?php echo (isset($object->nik)) ? "value=\"" . $object->responsibility . "\"" : "";
-?>>
+                            <input type="number" name="responsibility" id="responsibility">
                         </div>
     
                         <div class="col mt-3">
                             <label for="teamwork"> Teamwork: </label>
-                            <input type="number" name="teamwork" id="teamwork" class="input" <?php echo (isset($object->nik)) ? "value=\"" . $object->teamwork . "\"" : "";?>>
+                            <input type="number" name="teamwork" id="teamwork">
                         </div>
     
                         <div class="col mt-3">
                             <label for="management"> Management Time: </label>
-                            <input type="number" name="management" id="management" class="input" <?php echo (isset($object->nik)) ? "value=\"" . $object->management_time . "\"" : "";?>>
+                            <input type="number" name="management" id="management">
                         </div>
     
                         <div class="col d-flex align-items-center mt-3">
                             <label for="total"> Total: </label>
-                            <input type="text" name="total" id="total" class="border-0" disabled="true" <?php echo (isset($object->nik)) ? "value=\"" . $object->total . "\"" : "";?>>
+                            <input type="text" name="total" id="total" disabled>
                         </div>
     
                         <div class="col d-flex align-items-center mt-3">
                             <label for="grade"> Grade: </label>
-                            <input type="text" name="grade" id="grade" class="border-0" disabled="true" <?php echo (isset($object->nik)) ? "value=\"" . $object->grade . "\"" : "";?>>
+                            <input type="text" name="grade" id="grade" disabled>
                         </div>
                     </div>
                 </div>
@@ -170,7 +111,7 @@
                     </thead>
     
                     <tbody>
-                        <?php
+                        <!-- <?php
                             while($row = $result->fetch_assoc()) {
                                 echo "<tr class=\"text-center\">";
                                 echo "<td class=\"border border-2 border-black\">" . $row['tgl_penilaian'] . "</td>";
@@ -180,25 +121,19 @@
                                 echo "<td class=\"border border-2 border-black\">" . $row['position'] . "</td>";
                                 echo "<td class=\"border border-2 border-black\">" . $row['total'] . "</td>";
                                 echo "<td class=\"border border-2 border-black\">" . $row['grade'] . "</td>";
-                                
-
-                                // View Button
+    
                                 echo "<td class=\"border border-2 border-black bg-info-subtle\">
-                                    <a href=\"performance.php?nik=". $row['nik'] ."\">
-                                        <button class=\"view\"> View </button>
-                                    </a>
-                                </td>";
-
-
-                                // Edit Button
-                                echo "<td class=\"border border-2 border-black bg-warning-subtle\">
                                     <form action=\"\">
-                                        <button type=\"button\" class=\"edit\"> Edit </button>
+                                        <button> View </button>
                                     </form>
                                 </td>";
-
-
-                                // Hapus Button
+    
+                                echo "<td class=\"border border-2 border-black bg-warning-subtle\">
+                                    <form action=\"\">
+                                        <button> Edit </button>
+                                    </form>
+                                </td>";
+                                
                                 echo "<td class=\"border border-2 border-black bg-danger\">
                                     <form action=\"delete.php\" method=\"post\">
                                         <input type=\"hidden\" name=\"nik\" value=\"". $row['nik'] ."\">
@@ -206,42 +141,25 @@
                                     </form>
                                 </td>";
                             }
-                        ?>
+                        ?> -->
                     </tbody>
                 </table>
     
                 <div class="pt-5">
-                    <!-- <a href="performance.php"> -->
-                        <button id="add" class="btn btn-primary"> Add </button>
-                    <!-- </a> -->
+                    <button class="btn btn-primary"> Add </button>
                 </div>
             </div>
         </div>      
     </section>
 
-    <footer class="d-flex justify-content-between align-items-center px-5 py-3">
-        <div class="" id="footerLogo">
-            <img src="img/logo-only-white.png" alt="" />
-        </div>
-
-        <div id="footerText">
-            <p class="mb-0"> © 2023 Healthy Food </p>
-        </div>
-    </footer>
-
-
-    <!-- Bootstrap Script -->
     <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Script Image Upload -->
-    <script src="imageUpload.js"></script>
-
-    <!-- Script Total & Grade -->
     <script src="eventlistener.js"></script>
-    
-    <script src="edit.js"></script>
+    <!-- <script>
+        const myInput = document.querySelector("#input")
 
-    <script src="add.js"></script>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"> </script> -->
+        myInput.addEventListener("input", () => {
+            console.log(myInput.value);
+        })
+    </script> -->
 </body>
 </html>
