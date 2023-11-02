@@ -23,17 +23,6 @@
             }
         }
     }
-
-
-
-    // echo $obje->tgl_penilaian;
-    // echo $result_view -> fetch_object();
-    // $object->status_kerja == "Tetap" ? echo "Selected" : echo ""
-
-    // echo (isset($object->nik)) ? "value=\"" . $object->nik . "\"": "";
-
-    echo (isset($object->nik)) ? "value=\"" . $object->nik . "\"" : "";
-
 ?>
 
 <!DOCTYPE html>
@@ -200,8 +189,25 @@
                                 // Hapus Button
                                 echo "<td class=\"border border-2 border-black bg-danger\">
                                     <form action=\"delete.php\" method=\"post\">
+                                    <button type=\"button\" data-bs-toggle=\"modal\" data-bs-target=\"#exampleModal\" style=\"color: white;\"> Hapus </button>
                                         <input type=\"hidden\" name=\"nik\" value=\"". $row['nik'] ."\">
-                                        <button style=\"color: white;\"> Hapus </button>
+                                        <div class=\"modal fade\" id=\"exampleModal\" tabindex=\"-1\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">
+                                            <div class=\"modal-dialog\">
+                                                <div class=\"modal-content\">
+                                                <div class=\"modal-header\">
+                                                    <h1 class=\"modal-title fs-5\" id=\"exampleModalLabel\">Anda Yakin? </h1>
+                                                    <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"modal\" aria-label=\"Close\"></button>
+                                                </div>
+                                                <div class=\"modal-body\">
+                                                    Apakah Yakin Dihapus? ". $row['nik'] ."
+                                                </div>
+                                                <div class=\"modal-footer\">
+                                                    <button type=\"button\" class=\"btn btn-secondary\" data-bs-dismiss=\"modal\"> Tutup </button>
+                                                    <button type=\"submit\" class=\"btn btn-danger\"> Ya, saya yakin! </button>
+                                                </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </form>
                                 </td>";
                             }

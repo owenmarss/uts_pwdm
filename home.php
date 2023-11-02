@@ -192,7 +192,7 @@ foreach ($grades as $grade) {
                         // Menampilkan data karyawan tetap
                         foreach ($karyawanTetap as $row) {
                             echo "<tr class='text-center'>";
-                            echo "<td class='border border-2 border-black'>" . $row['foto'] . "</td>";
+                            echo "<td class='border border-2 border-black'><img src='uploads/" . $row['foto'] . "' style='width: 150px; height: 150px;' /></td>";
                             echo "<td class='border border-2 border-black'>" . $row['nik'] . "</td>";
                             echo "<td class='border border-2 border-black'>" . $row['nama'] . "</td>";
                             echo "<td class='border border-2 border-black'>" . $row['position'] . "</td>";
@@ -221,7 +221,7 @@ foreach ($grades as $grade) {
                         // Menampilkan data karyawan tidak tetap
                         foreach ($karyawanTidakTetap as $row) {
                             echo "<tr class='text-center'>";
-                            echo "<td class='border border-2 border-black'>" . $row['foto'] . "</td>";
+                            echo "<td class='border border-2 border-black'><img src='uploads/" . $row['foto'] . "' style='width: 150px; height: 150px;' /></td>"; // Tambahkan tag <img> untuk menampilkan gambar
                             echo "<td class='border border-2 border-black'>" . $row['nik'] . "</td>";
                             echo "<td class='border border-2 border-black'>" . $row['nama'] . "</td>";
                             echo "<td class='border border-2 border-black'>" . $row['position'] . "</td>";
