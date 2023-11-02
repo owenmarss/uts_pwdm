@@ -3,9 +3,10 @@
 if (isset($_POST['submit']) && isset($_FILES['up_img'])) {
     include 'config.php';
 
+    $nik = $_POST['nikHidden'];
+
     // Form value
     $tanggal = $_POST['tanggal'];
-    $nik = $_POST['nik'];
     $nama = $_POST['nama'];
     $status = $_POST['status'];
     $posisi = $_POST['posisi'];
@@ -48,9 +49,21 @@ if (isset($_POST['submit']) && isset($_FILES['up_img'])) {
 
             $newTotal = (float)$total;
 
+            // $sql = "INSERT into performance (nik, foto, nama, status_kerja, position, tgl_penilaian, responsibility, teamwork, management_time, total, grade) 
+            // VALUES ($nik, '$new_img_name', '$nama', '$status', '$posisi', '$newTanggal', $responsibility, $teamwork, $management_time, $newTotal, '$grade')";
             
-            $sql = "INSERT into performance (nik, foto, nama, status_kerja, position, tgl_penilaian, responsibility, teamwork, management_time, total, grade) 
-            VALUES ($nik, '$new_img_name', '$nama', '$status', '$posisi', '$newTanggal', $responsibility, $teamwork, $management_time, $newTotal, '$grade')";
+            $sql = "UPDATE performance SET foto = '$new_img_name',
+                        nama = '$nama',
+                        status_kerja = '$status',
+                        position = '$posisi',
+                        tgl_penilaian = '$newTanggal',
+                        responsibility = $responsibility,
+                        teamwork = $teamwork,
+                        management_time = $management_time,
+                        total = $newTotal,
+                        grade = '$grade'
+                    WHERE nik = $nik";
+            
             $result = $conn->query($sql);
             
             $conn->close();

@@ -12,18 +12,15 @@
 
     if(isset($url_components['query'])) {
         parse_str($url_components['query'], $params);
-        $nik = $params['nik'];
-        $sql_get_view = "SELECT tgl_penilaian, nik, nama, status_kerja, position, responsibility, teamwork, management_time, total, grade FROM performance WHERE nik = $nik";
-        // $result_view = $conn->query($sql_get_view);
-        // echo ' Hi '.$params['nik'];
-    
-        if ($result_view = $conn -> query($sql_get_view)) {
-            // while ($obj = $result_view -> fetch_object()) {
-                // printf("%s (%s)\n", $obje->tgl_penilaian, $obje->nik);
+        if(isset($params['nik'])) {
+            $nik = $params['nik'];
+            $sql_get_view = "SELECT * FROM performance WHERE nik = $nik";
+            
+        
+            if ($result_view = $conn -> query($sql_get_view)) {
                 $object = $result_view -> fetch_object();
-                // array_push($object, $obj->nik);
-            // }
-            $result_view -> free_result();
+                $result_view -> free_result();
+            }
         }
     }
 
@@ -65,18 +62,18 @@
         </div>
 
         <div class="d-flex gap-5">
-            <a href="home.html" class="text-decoration-none fs-5 text-black link-primary"> Home </a>
+            <a href="home.php" class="text-decoration-none fs-5 text-black link-primary"> Home </a>
             <a href="performance.php" class="text-decoration-none fs-5 text-black link-primary"> Performance </a>
         </div>
     </nav>
 
     <section id="performance_content" class="py-5">
         <div class="container">
-            <form action="simpan.php" class="row border border-2 border-black py-5 rounded" method="post" enctype="multipart/form-data">
+            <form action="edit.php" class="row border border-2 border-black py-5 rounded" method="post" enctype="multipart/form-data">
                 <div class="row justify-content-between">
                     <div id="foto" class="col d-flex gap-5">
                         <h5> Foto: </h5>
-                        <div class="img-area" data-img="hello.png">
+                        <div class="img-area" data-img="">
                             <p>upload foto</p>
                         </div>
 
@@ -102,7 +99,8 @@
     
                         <div class="col mt-3">
                             <label for="nik"> NIK: </label>
-                            <input type="text" name="nik" id="nik" class="input" <?php echo (isset($object->nik)) ? "value=\"" . $object->nik . "\"" : "";?>>
+                            <input type="text" name="nik" id="nik" disabled <?php echo (isset($object->nik)) ? "value=\"" . $object->nik . "\"" : "";?>>
+                            <input type="hidden" name="nikHidden" id="nik" <?php echo (isset($object->nik)) ? "value=\"" . $object->nik . "\"" : "";?>>
                         </div>
     
                         <div class="col mt-3">
@@ -127,8 +125,7 @@
                     <div id="right" class="col"> 
                         <div class="col">
                             <label for="responsibility"> Responsibility: </label>
-                            <input type="number" name="responsibility" id="responsibility" class="input" <?php echo (isset($object->nik)) ? "value=\"" . $object->responsibility . "\"" : "";
-?>>
+                            <input type="number" name="responsibility" id="responsibility" class="input" <?php echo (isset($object->nik)) ? "value=\"" . $object->responsibility . "\"" : "";?>>
                         </div>
     
                         <div class="col mt-3">
@@ -143,12 +140,14 @@
     
                         <div class="col d-flex align-items-center mt-3">
                             <label for="total"> Total: </label>
-                            <input type="text" name="total" id="total" class="border-0" disabled="true" <?php echo (isset($object->nik)) ? "value=\"" . $object->total . "\"" : "";?>>
+                            <input type="text" id="total" class="border-0" disabled <?php echo (isset($object->nik)) ? "value=\"" . $object->total . "\"" : "";?>>
+                            <input type="hidden" name="total" id="totalHidden">
                         </div>
     
                         <div class="col d-flex align-items-center mt-3">
                             <label for="grade"> Grade: </label>
-                            <input type="text" name="grade" id="grade" class="border-0" disabled="true" <?php echo (isset($object->nik)) ? "value=\"" . $object->grade . "\"" : "";?>>
+                            <input type="text" id="grade" class="border-0" disabled <?php echo (isset($object->nik)) ? "value=\"" . $object->grade . "\"" : "";?>>
+                            <input type="hidden" name="grade" id="gradeHidden">
                         </div>
                     </div>
                 </div>
@@ -211,9 +210,9 @@
                 </table>
     
                 <div class="pt-5">
-                    <!-- <a href="performance.php"> -->
+                    <a href="add.php">
                         <button id="add" class="btn btn-primary"> Add </button>
-                    <!-- </a> -->
+                    </a>
                 </div>
             </div>
         </div>      
@@ -241,7 +240,7 @@
     
     <script src="edit.js"></script>
 
-    <script src="add.js"></script>
+    <!-- <script src="add.js"></script> -->
     <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"> </script> -->
 </body>
 </html>

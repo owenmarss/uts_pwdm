@@ -33,4 +33,7 @@ function updateTotalGrade() {
 
     document.querySelector("#total").value = total.toFixed(2);
     document.querySelector("#grade").value = grade;
+
+    document.querySelector("#totalHidden").value = total.toFixed(2);
+    document.querySelector("#gradeHidden").value = grade;
 }
