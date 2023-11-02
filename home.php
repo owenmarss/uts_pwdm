@@ -78,7 +78,7 @@ foreach ($grades as $grade) {
 <body>
     <nav class="d-flex justify-content-between align-items-center px-5 py-2">
         <div class="" id="navLogo">
-            <img src="img/logo1.png" alt="" />
+            <img src="img/logo_kel1.png" alt="" />
         </div>
 
         <div class="d-flex gap-5">
@@ -235,7 +235,7 @@ foreach ($grades as $grade) {
 
     <footer class="d-flex justify-content-between align-items-center px-5 py-3">
         <div class="" id="footerLogo">
-            <img src="img/logo-only-white.png" alt="" />
+            <img src="img/logo_kel1.png" alt="" />
         </div>
 
         <div id="footerText">

@@ -47,7 +47,7 @@
 <body>
     <nav class="d-flex justify-content-between align-items-center px-5 py-2">
         <div class="" id="navLogo">
-            <img src="img/logo1.png" alt="" />
+            <img src="img/logo_kel1.png" alt="" />
         </div>
 
         <div class="d-flex gap-5">
@@ -74,7 +74,7 @@
                     <div id="formButton" class="col col-2 d-flex flex-column gap-2 align-items-end">
                         <input type="submit" class="btn btn-success" name="submit" value="Simpan"></input>
                         <!-- <button type="submit" class="btn btn-success" name="submit"> Simpan </button> -->
-                        <button class="btn btn-warning"> Clear </button>
+                        <button type="button" class="btn btn-warning"> Clear </button>
                         <button type="reset" class="btn btn-danger"> Cancel </button>
                     </div>
                 </div>
@@ -189,9 +189,9 @@
                                 // Hapus Button
                                 echo "<td class=\"border border-2 border-black bg-danger\">
                                     <form action=\"delete.php\" method=\"post\">
-                                    <button type=\"button\" data-bs-toggle=\"modal\" data-bs-target=\"#exampleModal\" style=\"color: white;\"> Hapus </button>
+                                        <button type=\"button\" data-bs-toggle=\"modal\" data-bs-target=\"#exampleModal". $row['nik'] ."\" style=\"color: white;\"> Hapus </button>
                                         <input type=\"hidden\" name=\"nik\" value=\"". $row['nik'] ."\">
-                                        <div class=\"modal fade\" id=\"exampleModal\" tabindex=\"-1\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">
+                                        <div class=\"modal fade\" id=\"exampleModal". $row['nik'] ."\" tabindex=\"-1\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">
                                             <div class=\"modal-dialog\">
                                                 <div class=\"modal-content\">
                                                 <div class=\"modal-header\">
@@ -199,7 +199,7 @@
                                                     <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"modal\" aria-label=\"Close\"></button>
                                                 </div>
                                                 <div class=\"modal-body\">
-                                                    Apakah Yakin Dihapus? ". $row['nik'] ."
+                                                    Apakah Yakin Dihapus?
                                                 </div>
                                                 <div class=\"modal-footer\">
                                                     <button type=\"button\" class=\"btn btn-secondary\" data-bs-dismiss=\"modal\"> Tutup </button>
@@ -226,7 +226,7 @@
 
     <footer class="d-flex justify-content-between align-items-center px-5 py-3">
         <div class="" id="footerLogo">
-            <img src="img/logo-only-white.png" alt="" />
+            <img src="img/logo_kel1.png" alt="" />
         </div>
 
         <div id="footerText">
